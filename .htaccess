@@ -1,0 +1,19 @@
+PHP_FLAG register_globals ON
+PHP_VALUE mysql.default_charset UTF8
+
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+# 실제 파일은 직접 서빙
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# admin/, auth/, assets/, uploads/ 는 라우터 통하지 않고 직접 접근
+RewriteRule ^admin(/.*)?$   - [L]
+RewriteRule ^auth(/.*)?$    - [L]
+RewriteRule ^assets(/.*)?$  - [L]
+RewriteRule ^uploads(/.*)?$ - [L]
+
+# 나머지는 index.php 로
+RewriteRule ^(.*)$ index.php [QSA,L]

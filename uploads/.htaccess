@@ -1,0 +1,6 @@
+# uploads/.htaccess — PHP 실행 차단 (보안)
+Options -Indexes
+
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|cgi|sh)$">
+  Require all denied
+</FilesMatch>
